@@ -11,3 +11,6 @@ app.config.from_object(Config())
 def index():
     items = get_items()
     return render_template("index.html", items = items)
+
+
+  
