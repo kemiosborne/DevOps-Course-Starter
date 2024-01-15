@@ -10,8 +10,8 @@ reqUrl = f"https://api.trello.com/1/cards"
 query_parameters = {
     "key": os.getenv("TRELLO_API_KEY"),
     "token": os.getenv("TRELLO_API_TOKEN"),
-    "idList": "6579d6eb8b2f72513c4a97cc",
-    "name": "Giftshop",
+    "idList": os.getenv("TRELLO_TODO_LIST_ID"),
+    "name": "Karris shop",
 }  
 
 response = requests.post(reqUrl, params = query_parameters)
