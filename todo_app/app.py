@@ -59,3 +59,20 @@ def create():
 
 
   
+@app.route('/complete-item', methods = ["POST"])
+def complete():
+    todo_title = request.form.get('todo-name')
+
+    card_id = "6579d74a08f5f750b9d1a51f"
+
+    reqUrl = f"https://api.trello.com/1/cards/{card_id}"
+
+    query_parameters = {
+        "key": os.getenv("TRELLO_API_KEY"),
+        "token": os.getenv("TRELLO_API_TOKEN"),
+        "idList": "6579d6eb8b2f72513c4a97ce",
+    }  
+
+    response = requests.put(reqUrl, params = query_parameters)
+
+    return redirect('/')
