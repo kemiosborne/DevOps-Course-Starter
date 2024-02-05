@@ -17,7 +17,7 @@
       <h2>Items</h2>
       <ul class="list-group mb-4">
         {% for item in items %}
-          <form action="complete-item" method="post" class="form-example">
+          <form action="complete-item/{{ item.id }}" method="post" class="form-example">
             <li>{{ item.name }} - {{ item.status }}</li>
             <input type="submit" value="Complete" />
           </form>
