@@ -2,6 +2,8 @@ import requests
 
 import os
 
+from todo_app.data.todo_item import Item
+
 def get_items():
     board_id = os.getenv("TRELLO_BOARD_ID")
 
@@ -17,13 +19,14 @@ def get_items():
     response = requests.get(reqUrl, params=query_parameters)
     response_json = response.json()
 
-    cards = []
+    items = []
     for trello_list in response_json:
         for card in trello_list['cards']:
-            card['status'] = trello_list['name']
-            cards.append(card)
+            item = Item.from_trello_card(card, trello_list)
+            
+            items.append(item)
 
-    return cards
+    return items
 
 
 def add_item(title):
