@@ -11,7 +11,15 @@ class ViewModel:
     
     @property
     def todo_items(self):
-        return []
+        all_items = self._items
+
+        output = []
+
+        for item in all_items:
+            if item.status == "To Do":
+                output.append(item)
+
+        return output
     
     @property
     def done_items(self):
@@ -24,3 +32,4 @@ class ViewModel:
                 output.append(item)
 
         return output
+    

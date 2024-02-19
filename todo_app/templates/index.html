@@ -29,7 +29,7 @@
         {% for item in view_model.done_items %}
           <form action="complete-item/{{ item.id }}" method="post" class="form-example">
             <li>{{ item.name }} - {{ item.status }}</li>
-            <input type="submit" value="Complete" />
+            
           </form>
         {% endfor %}
       </ul>
