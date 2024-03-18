@@ -65,3 +65,14 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 ## Running the Tests
 To check the tests are passing, 
 in the terminal session, run the tests: `poetry run pytest`
+
+## Building and running the app via Containers
+How to build the container image
+```
+docker build . --tag todo-app
+```
+
+How to run the container
+```
+docker run --publish 5000:5000 todo-app
+```
