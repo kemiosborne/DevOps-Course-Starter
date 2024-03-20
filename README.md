@@ -69,10 +69,12 @@ in the terminal session, run the tests: `poetry run pytest`
 ## Building and running the app via Containers
 How to build the container image
 ```
-docker build . --tag todo-app
+docker build --target development --tag todo-app:dev .
+docker build --target production --tag todo-app:prod .
 ```
 
 How to run the container
 ```
-docker run --publish 5000:5000 todo-app
+docker run --publish 5000:5000 --env-file .env todo-app:prod
+docker run --env-file ./.env -p 5100:5000 --mount "type=bind,source=$(pwd)/todo_app,target=/app/todo_app" todo-app:dev
 ```
