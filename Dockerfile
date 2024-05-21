@@ -11,3 +11,8 @@ ENV FLASK_DEBUG=false
 
 FROM base as development
 ENV FLASK_DEBUG=true
+
+
+FROM base as test
+
+ENTRYPOINT poetry run pytest

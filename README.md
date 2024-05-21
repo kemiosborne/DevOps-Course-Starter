@@ -78,3 +78,15 @@ How to run the container
 docker run --publish 5000:5000 --env-file .env todo-app:prod
 docker run --env-file ./.env -p 5100:5000 --mount "type=bind,source=$(pwd)/todo_app,target=/app/todo_app" todo-app:dev
 ```
+
+Build the test container image
+ 
+```
+docker build --target test --tag todo-app:test
+```
+
+Run the test container 
+
+```
+docker run todo-app:test
+```
