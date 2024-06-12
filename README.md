@@ -90,3 +90,7 @@ Run the test container
 ```
 docker run todo-app:test
 ```
+
+## Pipelines
+
+GitHub Actions pipelines are defined in the `.github/workflows` folder.
