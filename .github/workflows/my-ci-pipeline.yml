@@ -15,6 +15,17 @@ jobs:
     - uses: actions/checkout@v4
     - run: echo Hello World
     - run: docker build --tag todo-app:test --target test .
-    - run: docker run todo-app:test
-    
+    - run: docker run todo-app:testdeploy
+  deploy:
+    name: deploying application
+    runs-on: ubuntu-latest
+    env:
+      WEBHOOK_URL: ${{secrets.WEBHOOK_URL}}
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --target production --tag kemiosborne/todoapp .
+      - run: docker push kemiosborne/todoapp
+      - run: curl -v -X POST '$WEBHOOK_URL'
+
+
     
