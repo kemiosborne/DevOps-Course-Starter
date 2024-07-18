@@ -94,3 +94,20 @@ docker run todo-app:test
 ## Pipelines
 
 GitHub Actions pipelines are defined in the `.github/workflows` folder.
+
+## Deploying the application
+
+The application runs on Azure at https://osbornetodoapp.azurewebsites.net/
+
+To update the application, first build the image locally:
+
+```
+docker build --target production --tag kemiosborne/todoapp .
+```
+
+Next push the image to Docker Hub:
+```
+docker push kemiosborne/todoapp
+```
+
+Lastly, make a POST request to the Azure App Service Webhook (this can be found under the App Service Deployment Center Settings)
