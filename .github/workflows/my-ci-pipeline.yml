@@ -21,11 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       WEBHOOK_URL: ${{secrets.WEBHOOK_URL}}
+      DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
     steps:
       - uses: actions/checkout@v4
       - run: docker build --target production --tag kemiosborne/todoapp .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - run: docker push kemiosborne/todoapp
-      - run: curl -v -X POST '$WEBHOOK_URL'
+      - run: curl -v -X POST "$WEBHOOK_URL"
 
 
     
